@@ -32,8 +32,9 @@ namespace feednews.Code.Service
                     name = model.Name
                 }
             };
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+		
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             
             var graphQLResponse = await graphQLClient.SendMutationAsync(userRequest);
 
@@ -77,8 +78,9 @@ namespace feednews.Code.Service
                     password = model.Password
                 }
             };
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+		
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
 
             var graphQLResponse = await graphQLClient.SendQueryAsync(LoginRequest);
 
