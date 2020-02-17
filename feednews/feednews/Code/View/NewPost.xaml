@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:feednews.Code.ViewModel"
+             mc:Ignorable="d"
+             x:Class="feednews.Code.View.NewPost"
+             Title="NEW POST">
+
+
+    <StackLayout Orientation="Vertical" Padding="10" Spacing="20" VerticalOptions="Center">
+
+        <StackLayout Orientation="Vertical" Spacing="10">
+            <Label Text="Choose a picture" HorizontalOptions="Center" />
+            <Frame BorderColor="Gray" CornerRadius="5">
+                <Image Source="{Binding ImageSource}" BackgroundColor="LightSeaGreen" HeightRequest="200" Aspect="Fill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChoosePhotoCommand}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="Title" />
+            <Entry Keyboard="Text" Text="{Binding Title}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="Description" />
+            <Entry VerticalOptions="FillAndExpand" Keyboard="Chat" Text="{Binding Content}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <Button Text="Send" BackgroundColor="DodgerBlue" TextColor="White"
+                    Command="{Binding CreatePostCommand}" />
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿//====================
+Message Center
+    
+    //Recebe o dado vindo o register
+    MessagingCenter.Subscribe<UserViewModel, string>(this, "Sucess", async (sender, arg) =>
+    {
+       // Apresenta a mensagem
+       await Page.DisplayAlert("Sucess", arg, "OK");
+                
+     });
+
+     //Não recebe mais a mensagem
+     MessagingCenter.Unsubscribe<UserViewModel, string>(this, "Sucess");
+
+//Caso de uso de navigation com data ou messagecenter
+                
+//Use Navigation para passagem de dados quando souber onde irá ir exemplo.Ex:List all users, click and go to single post, ypu know where you are goig so you can send the data
+               
+//Use Messagecenter se não conhecemos onde iremos.Ex:We are in single post so we want to display an alert but hey single post doesn't know the master detail, for that we use messacenter, when we go back and click master detail we will see a displayalert with the info
+                
+//Message center needs to be initialized,the same for navigation(but will receive the data on the constructor params)
+
+//To avoid filling the constructor with tons of messagecenter, we can use Interface or Create a method and call it on the constructor and on the method we want it to use
+            
+
+
+
+//===========================
+//SecureStorage
+
+                //var oauthToken = await SecureStorage.GetAsync("Auth_userId");
+                //SecureStorage.Remove("oauth_token"); => Remove uma chave específica
+                //SecureStorage.RemoveAll(); => Remove todos
+
+
+//==============
+<Label.FormattedText>
+                                    <FormattedString>
+                                        <Span >
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding SinglePostCommand}" CommandParameter="Hello dear"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+
+//===========================
+Sending binding from listview
+                            <ImageButton Source="{Binding ImageUrl,StringFormat='http://192.168.0.12:8080/{0:F0}'}" WidthRequest="70" HeightRequest="50" VerticalOptions="CenterAndExpand">
+                                <ImageButton.Behaviors>
+                                    <local:EventToCommandBehavior EventName="Clicked" Command="{Binding Path=BindingContext.SinglePostCommand, Source={x:Reference listView}}" CommandParameter="{Binding .}"/>
+                                </ImageButton.Behaviors>
+                            </ImageButton>

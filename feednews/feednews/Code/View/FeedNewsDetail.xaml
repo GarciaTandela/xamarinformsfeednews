@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:EventToCommandBehavior"
+             mc:Ignorable="d"
+             x:Class="feednews.Code.View.FeedNewsDetail"
+             Title="FEED NEWS">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="NEW POST" Order="Primary" Priority="0" Command="{Binding NewPostCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Orientation="Vertical" Padding="10" Spacing="20">
+        <StackLayout Orientation="Horizontal">
+            <Label WidthRequest="200" TextColor="Black" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="{Binding Status}"/>
+        </StackLayout>
+        
+        <!-- List of posts that belongs to the user-->
+
+        <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Posts, Mode=TwoWay}" SelectionMode="None" SeparatorColor="Black" Header="FEED NEWS POSTS">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell ViewCell.IsContextActionsLegacyModeEnabled="True">
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="DELETE" IsDestructive="True" Command="{Binding Path=BindingContext.DeletePostCommand, Source={x:Reference listView}}" CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal" Padding="5" HeightRequest="63">
+                            <Image Source="{Binding ImageUrl,StringFormat='http://192.168.0.12:8080/{0:F0}'}" WidthRequest="70" HeightRequest="50" VerticalOptions="CenterAndExpand"/>
+                            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding Title,StringFormat='Title: {0:F0}'}" TextColor="Gray" FontSize="Medium" FontAttributes="Bold"/>
+                                <Label Text="{Binding Creator.Name,StringFormat='Posted By {0:F0}'}"/>
+                            </StackLayout>
+
+                            <Label VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="More Details" TextColor="Blue">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SinglePostCommand, Source={x:Reference listView}}" CommandParameter="{Binding .}"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+
+    </StackLayout>
+</ContentPage>

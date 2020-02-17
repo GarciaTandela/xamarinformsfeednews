@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="feednews.MainPage"
+             Title="FEED NEWS" NavigationPage.HasBackButton="False"
+             >
+
+    <FlexLayout Direction="Column" JustifyContent="Center">
+
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="10">
+
+                <Label Text="LOGIN" FontAttributes="Bold" FontSize="Title" HorizontalTextAlignment="Center"
+                       Margin="0, 0, 0, 40" TextColor="DarkMagenta" />
+                <StackLayout>
+                    <Label Text="Your Email:" />
+                    <Entry Keyboard="Email" Text="{Binding Email}" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Password:" />
+                    <Entry IsPassword="True" Text="{Binding Password}" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Button Command="{Binding LoginCommand}" Text="Login" BackgroundColor="Teal" TextColor="White"></Button>
+                    <Label HorizontalTextAlignment="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Don't Have An Account? Sign up" TextColor="DodgerBlue"
+                                      TextDecorations="Underline" FontSize="Subtitle">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </FlexLayout>
+
+</ContentPage>

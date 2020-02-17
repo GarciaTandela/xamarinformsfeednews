@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="feednews.Code.View.SinglePost" Title="POST INFO" NavigationPage.HasBackButton="True">
+
+    <StackLayout Orientation="Vertical" Padding="10" Spacing="20" VerticalOptions="Center">
+
+        <StackLayout Orientation="Vertical" Spacing="10">
+            <Frame BorderColor="Gray" CornerRadius="5">
+                <Image Source="{Binding ImageUrl,Mode=TwoWay,StringFormat='http://192.168.0.12:8080/{0:F0}'}"
+                       HeightRequest="200" Aspect="Fill" />
+            </Frame>
+
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Title,Mode=TwoWay}" FontAttributes="Bold" FontSize="Title"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Content,Mode=TwoWay}" FontSize="Body" HorizontalTextAlignment="Center" />
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>
