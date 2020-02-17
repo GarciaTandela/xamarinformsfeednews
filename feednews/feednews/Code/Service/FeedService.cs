@@ -31,8 +31,9 @@ namespace feednews.Code.Service
                     Id = userId
                 }
             };
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+		
+	    //Put your graphql url in GraphQLHttpClient	
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             graphQLClient.DefaultRequestHeaders.Add("Authorization", $"bearer {Token}");
 
             var graphQLResponse = await graphQLClient.SendQueryAsync(getUserDataRequest);
@@ -69,8 +70,9 @@ namespace feednews.Code.Service
 
             //Send the image file
             string Token = await SecureStorage.GetAsync("Auth_Token");
-
-            var result = await CrossFileUploader.Current.UploadFileAsync("http://192.168.0.12:8080/post-image", new FilePathItem("image",photo), new Dictionary<string, string>()
+		
+	    //Put your graphql url in GraphQLHttpClient	
+            var result = await CrossFileUploader.Current.UploadFileAsync("********/post-image", new FilePathItem("image",photo), new Dictionary<string, string>()
                 {
                    {"Authorization" , $"Bearer {Token}"}
                 }
@@ -119,8 +121,8 @@ namespace feednews.Code.Service
                 }
             };
 
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             graphQLClient.DefaultRequestHeaders.Add("Authorization", $"bearer {Token}");
 
             var graphQLResponse = await graphQLClient.SendMutationAsync(CreatePost);
@@ -173,8 +175,9 @@ namespace feednews.Code.Service
             };
 
             string Token = await SecureStorage.GetAsync("Auth_Token");
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+		
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             graphQLClient.DefaultRequestHeaders.Add("Authorization", $"bearer {Token}");
 
             var graphQLResponse = await graphQLClient.SendQueryAsync(getPosts);
@@ -223,8 +226,9 @@ namespace feednews.Code.Service
             };
 
             string Token = await SecureStorage.GetAsync("Auth_Token");
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+            
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             graphQLClient.DefaultRequestHeaders.Add("Authorization", $"bearer {Token}");
             graphQLClient.DefaultRequestHeaders.Add("Single", $"{id}");
 
@@ -268,8 +272,9 @@ namespace feednews.Code.Service
             };
 
             string Token = await SecureStorage.GetAsync("Auth_Token");
-
-            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("http://192.168.0.12:8080/graphql");
+	    
+	    //Put your graphql url in GraphQLHttpClient
+            GraphQLHttpClient graphQLClient = new GraphQLHttpClient("");
             graphQLClient.DefaultRequestHeaders.Add("Authorization", $"bearer {Token}");
             graphQLClient.DefaultRequestHeaders.Add("Single", $"{id}");
 
