@@ -3,5 +3,6 @@ Feed News is a cross plataform App for posting news and share with others, devel
 
 Requirements
 
-1- Visual Studio 2019
-2- FeedNewsAPI - https://github.com/YannickSilva/FeedNewsAPI
+Visual Studio 2019
+
+FeedNewsAPI https://github.com/YannickSilva/FeedNewsAPI
